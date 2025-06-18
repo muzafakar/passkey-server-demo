@@ -1,3 +1,51 @@
+# Passkey Demo Project (Next.js + SimpleWebAuthn)
+
+This is a demo project implementing passkey (WebAuthn) registration and authentication using Next.js (TypeScript) and [SimpleWebAuthn](https://simplewebauthn.dev/). It demonstrates a stateless, file-based credential store and is suitable for web and mobile integration demos.
+
+## Features
+- Passkey registration and authentication (WebAuthn)
+- Stateless API routes (no session/cookie dependency)
+- File-based credential storage (`credentials.json`)
+- Multi-user support (credentials indexed by username)
+- Simple challenge generation for demo purposes
+- Ready for integration with Android or other clients
+
+## Project Structure
+- `app/api/webauthn/register/route.ts` — Registration option generation
+- `app/api/webauthn/register/verify/route.ts` — Registration verification and credential storage
+- `app/api/webauthn/authenticate/route.ts` — Authentication option generation
+- `app/api/webauthn/authenticate/verify/route.ts` — Authentication verification
+- `app/api/webauthn/credentialStore.ts` — File-based credential manager
+- `app/api/webauthn/challenge.ts` — Challenge generator utility
+
+## Getting Started
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run the development server:**
+   ```sh
+   npm run dev
+   ```
+3. **API Endpoints:**
+   - `POST /api/webauthn/register` — Get registration options
+   - `POST /api/webauthn/register/verify` — Verify registration and store credential
+   - `POST /api/webauthn/authenticate` — Get authentication options
+   - `POST /api/webauthn/authenticate/verify` — Verify authentication
+
+## Notes
+- This demo uses a simple file-based credential store (`credentials.json`). Do **not** use this approach in production.
+- Challenges are generated per-username and are not cryptographically secure. For real deployments, use secure random values and proper session management.
+- The project is designed for easy integration with mobile apps and web clients.
+
+## References
+- [SimpleWebAuthn Documentation](https://simplewebauthn.dev/docs/)
+- [WebAuthn Guide (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API)
+
+---
+
+**Demo only. Not for production use.**
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
